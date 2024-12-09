@@ -1,15 +1,27 @@
-// destructuring js -> {menu}
-// https://www.w3schools.com/js/js_destructuring.asp
+import { useState } from "react";
 
-function NavItems({ menu, activeTab, handleClick }) {
+function NavItems({ menu }) {
+  const [activeTab, setActiveTab] = useState("Dashboard");
+
   return (
-    <div className="flex gap-x-8">
-      {menu.map((item, index) => (
-        <a onClick={() => handleClick(item.title)} className={activeTab !== item.title ? 'text-black' : 'text[19918F] font-bold'} key={index} href={item.link}>
-          {item.title}
-        </a>
-      ))}
-    </div>
+    <ul className="flex gap-x-8 text-black">
+      {menu.map((item) => {
+        return (
+          <a
+            key={item.title}
+            href={item.link}
+            className={`${
+              activeTab === item.title
+                ? "text-[#19918F] font-bold"
+                : "text-black"
+            }`}
+            onClick={() => setActiveTab(item.title)}
+          >
+            {item.title}
+          </a>
+        );
+      })}
+    </ul>
   );
 }
 
