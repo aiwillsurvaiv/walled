@@ -1,22 +1,22 @@
-import NavItems from "./NavItems";
-import logo from "../assets/logo.png";
+import NavItems from './NavItems';
+import logo from '../assets/logo.png';
 
 const MENU = [
   {
-    title: "Dashboard",
-    link: "#",
+    title: 'Dashboard',
+    link: '/dashboard',
   },
   {
-    title: "Transfer",
-    link: "#",
+    title: 'Transfer',
+    link: '/transfer',
   },
   {
-    title: "Topup",
-    link: "#",
+    title: 'Topup',
+    link: '/topup',
   },
   {
-    title: "Sign Out",
-    link: "#",
+    title: 'Sign Out',
+    link: '/',
   },
 ];
 

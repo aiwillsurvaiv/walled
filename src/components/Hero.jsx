@@ -1,20 +1,23 @@
-import { useState } from "react";
-import Avatar from "./Avatar";
-import viewIcon from "../assets/view.png";
+import { useEffect, useState } from 'react';
+import Avatar from './Avatar';
+import viewIcon from '../assets/view.png';
 
 function Hero() {
   const [showBalance, setShowBalance] = useState(true);
+  const [username, setUsername] = useState('');
+  useEffect(() => {
+    const loginObj = localStorage.getItem('loginForm');
+    console.log(loginObj);
+    const { email } = JSON.parse(loginObj);
+    setUsername(email);
+  }, []);
 
   return (
     <section className="w-full px-16 mt-12">
       <div className="flex items-center justify-center">
         <div className="mr-auto">
-          <h1 className="text-black text-6xl font-bold">
-            Good Morning, Chelsea!
-          </h1>
-          <p className="text-black text-2xl mt-3">
-            Check all your incoming and outgoing transactions here
-          </p>
+          <h1 className="text-black text-6xl font-bold">Good Morning, {username}!</h1>
+          <p className="text-black text-2xl mt-3">Check all your incoming and outgoing transactions here</p>
         </div>
         <Avatar />
       </div>
@@ -26,15 +29,8 @@ function Hero() {
         <div className="bg-white p-12 rounded-2xl w-full text-black">
           <p>Balance</p>
           <span className="flex items-center mt-3 gap-x-2">
-            <p className="font-bold">
-              {showBalance ? "Rp10.000.000,00" : "Rp ********"}
-            </p>
-            <img
-              src={viewIcon}
-              alt="view"
-              className="w-4 h-4 object-cover cursor-pointer"
-              onClick={() => setShowBalance((prev) => !prev)}
-            />
+            <p className="font-bold">{showBalance ? 'Rp10.000.000,00' : 'Rp ********'}</p>
+            <img src={viewIcon} alt="view" className="w-4 h-4 object-cover cursor-pointer" onClick={() => setShowBalance((prev) => !prev)} />
           </span>
         </div>
       </div>
